@@ -1,4 +1,4 @@
-# labs_rotanov_di
+# second_lab_rotanov_di
 
 A new Flutter project.
 
