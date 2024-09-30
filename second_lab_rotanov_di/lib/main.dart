@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,27 +7,11 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -41,15 +23,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -57,79 +30,213 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  Color _color = Colors.orangeAccent;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-      _color = Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
-    });
-  }
+  final Color _color = Colors.orangeAccent;
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
         backgroundColor: _color,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+      body: const MyWidget(),
+    );
+  }
+}
+
+class _CardData {
+  final String text;
+  final String imageUrl;
+
+  _CardData(
+    this.text, {
+    required this.imageUrl,
+  });
+}
+
+class MyWidget extends StatelessWidget {
+  const MyWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final data = [
+      _CardData('Bridge over the river',
+          imageUrl:
+              'https://avatars.mds.yandex.net/get-mpic/4529531/img_id226490233354577725.jpeg/orig'),
+      _CardData(
+        'Leopard in the Colchester Zoo',
+        imageUrl:
+            'https://upload.wikimedia.org/wikipedia/commons/b/b8/Leopard_in_the_Colchester_Zoo.jpg',
+      ),
+      _CardData(
+        'Reflected Glory',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=1bea43c9449309793c0f626721029e3c_l-9598980-images-thumbs&n=13',
+      ),
+      _CardData(
+        'Butterflies',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=e27c0aeb6bdd2b252366c45698517d4872438062-9065825-images-thumbs&n=13',
+      ),
+      _CardData(
+        'Horses, stallions, three',
+        imageUrl:
+            'https://images.wallpaperscraft.com/image/single/horses_stallions_three_78426_3840x2400.jpg',
+      ),
+      _CardData(
+        'Kittens',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=0b9315290af2bf68938107ccd369ee7ad084fd7f9594cd2f-12593547-images-thumbs&n=13',
+      ),
+      _CardData(
+        'Forest landscape',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=3d2b03de77e5d214c4bff846b4bb6ef9-4451422-images-thumbs&n=13',
+      ),
+      _CardData(
+        'Mountains Hills Scenic Trees Forest',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=90543b123c46e954eb06593060ef02fee493ff46-5325638-images-thumbs&n=13',
+      ),
+      _CardData(
+        'Dolphin Games',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=eb9c4fb7fefbd6a6d4ff4fe557a7bb9600c4c5d3-7753204-images-thumbs&n=13',
+      ),
+      _CardData(
+        'San francisco golden gate bridge',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=685c954419f148bb6333dca4b926e4b7865fc465-7040874-images-thumbs&n=13',
+      ),
+      _CardData(
+        'Madeira Island',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=5210b9f92d8ba85e093e5629bf3fb4f757fb9b5f-10385077-images-thumbs&n=13',
+      ),
+      _CardData(
+        'False Creek Vancouver',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=a8b45cc5b58ce10155ba7ebe2821ae534cb6688d-5473904-images-thumbs&n=13',
+      ),
+      _CardData(
+        'Winter Wallpaper',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=459543c7297a92dcb45378b4d03cd97a075724d7-9701815-images-thumbs&n=13',
+      ),
+      _CardData(
+        'Eiffel tower',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=24640b321dbbac8b3613366b0d013bb70eda9e26-5873671-images-thumbs&n=13',
+      ),
+      _CardData(
+        'Green Road',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=2693f29db0356ef5ec3ca6b91cec37252f45d9ae-11459613-images-thumbs&n=13',
+      ),
+      _CardData(
+        'Colorful Purple Blue Clouds',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=896360495f64b86399c57d4dfe82c9d95d3ac2f9-10933600-images-thumbs&n=13',
+      ),
+      _CardData(
+        'Beautiful spring flowering tree',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=506e15ed624ace93b2479010964f8c83cd32e55f-4824334-images-thumbs&n=13',
+      ),
+      _CardData(
+        'Rainbow',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=dd5793f861ce49385c42968cdf6fd324c6b7c88d-12650537-images-thumbs&n=13',
+      ),
+      _CardData(
+        'Cherry',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=189cd69331faaa397018cbfa9257de67f24f3676f2c00ecd-12920410-images-thumbs&n=13',
+      ),
+      _CardData(
+        'Apples',
+        imageUrl:
+            'https://avatars.mds.yandex.net/i?id=17279829f235d1042ba0f7694b3305d8-5887331-images-thumbs&n=13',
+      ),
+    ];
+
+    return Center(
+      child: SingleChildScrollView(
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            if (_counter > 10)
-              Text(
-                  'Why are you clicking?',
-                style: Theme.of(context).textTheme.headlineMedium,
-              )
-          ],
+          children: data.map((e) => _Card.fromData(e)).toList(),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        backgroundColor: _color,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class _Card extends StatelessWidget {
+  final String text;
+  final String imageUrl;
+
+  const _Card(
+    this.text, {
+    required this.imageUrl,
+  });
+
+  factory _Card.fromData(_CardData data) => _Card(
+        data.text,
+        imageUrl: data.imageUrl,
+      );
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+          color: Colors.white70,
+          border: Border.all(
+            color: Colors.grey,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(.5),
+              spreadRadius: 4,
+              offset: const Offset(0, 5),
+              blurRadius: 8,
+            )
+          ]),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: SizedBox(
+              height: 140,
+              width: 100,
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => const Placeholder(),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    text,
+                    style: Theme.of(context).textTheme.headlineLarge,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
