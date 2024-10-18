@@ -24,6 +24,13 @@ class DetailsPage extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineLarge,
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 4.0),
+            child: Text(
+              data.descriptionText,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+          ),
         ],
       ),
     );

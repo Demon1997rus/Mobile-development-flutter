@@ -5,6 +5,7 @@ typedef OnLikeCallBack = void Function(String title, bool isLiked)?;
 class _Card extends StatefulWidget {
   final String text;
   final String imageUrl;
+  final String descriptionText;
   final OnLikeCallBack onLike;
   final VoidCallback? onTap;
 
@@ -13,6 +14,7 @@ class _Card extends StatefulWidget {
     required this.imageUrl,
     this.onLike,
     this.onTap,
+    required this.descriptionText,
   });
 
   factory _Card.fromData(
@@ -25,6 +27,7 @@ class _Card extends StatefulWidget {
         imageUrl: data.imageUrl,
         onLike: onLike,
         onTap: onTap,
+        descriptionText: data.descriptionText,
       );
 
   @override
@@ -81,19 +84,11 @@ class _CardState extends State<_Card> {
                         alignment: Alignment.bottomRight,
                         child: Container(
                           decoration: const BoxDecoration(
-                            color: Colors.orangeAccent,
                             borderRadius: BorderRadius.only(
                               topRight: Radius.circular(20),
                             ),
                           ),
-                          padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
-                          child: Text(
-                            'Скидка 20%',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge
-                                ?.copyWith(color: Colors.black),
-                          ),
+                          padding: const EdgeInsets.fromLTRB(10, 20, 80, 20),
                         ),
                       )
                     ],
@@ -109,6 +104,10 @@ class _CardState extends State<_Card> {
                       Text(
                         widget.text,
                         style: Theme.of(context).textTheme.headlineLarge,
+                      ),
+                      Text(
+                        widget.descriptionText,
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ],
                   ),

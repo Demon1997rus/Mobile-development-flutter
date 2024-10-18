@@ -18,10 +18,10 @@ class CharactersDataDto {
   final String? type;
   final CharacterAttributesDataDto? attributes;
 
-  const CharactersDataDto();
+  const CharactersDataDto(this.id, this.type, this.attributes);
 
   factory CharactersDataDto.fromJson(Map<String, dynamic> json) =>
-      _$CharacterDataDtoFromJson(json);
+      _$CharactersDataDtoFromJson(json);
 }
 
 @JsonSerializable(createToJson: false)
@@ -31,7 +31,7 @@ class CharacterAttributesDataDto {
   final String? died;
   final String? image;
 
-  const CharacterAttributesDataDto();
+  const CharacterAttributesDataDto(this.name, this.born, this.died, this.image);
 
   factory CharacterAttributesDataDto.fromJson(Map<String, dynamic> json) =>
       _$CharacterAttributesDataDtoFromJson(json);

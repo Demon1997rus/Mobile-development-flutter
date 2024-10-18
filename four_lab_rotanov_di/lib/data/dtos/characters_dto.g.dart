@@ -14,8 +14,20 @@ CharactersDto _$CharactersDtoFromJson(Map<String, dynamic> json) =>
     );
 
 CharactersDataDto _$CharactersDataDtoFromJson(Map<String, dynamic> json) =>
-    CharactersDataDto();
+    CharactersDataDto(
+      json['id'] as String?,
+      json['type'] as String?,
+      json['attributes'] == null
+          ? null
+          : CharacterAttributesDataDto.fromJson(
+              json['attributes'] as Map<String, dynamic>),
+    );
 
 CharacterAttributesDataDto _$CharacterAttributesDataDtoFromJson(
         Map<String, dynamic> json) =>
-    CharacterAttributesDataDto();
+    CharacterAttributesDataDto(
+      json['name'] as String?,
+      json['born'] as String?,
+      json['died'] as String?,
+      json['image'] as String?,
+    );
